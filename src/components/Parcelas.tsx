@@ -1,11 +1,19 @@
 import { Check, RadioButtonUnchecked } from '@mui/icons-material'
 import { Box, Radio, Typography } from '@mui/material'
 import { BoxParcela, BoxPixTag, BoxTag } from './ui/ComponentsParcelamento'
-import { ParcelaProps } from '../types/tiposParcelas';
+import { ParcelaInfo, ParcelaProps } from '../types/tiposParcelas';
+import { useContext } from 'react';
+import context from '../context/context';
 
-function Parcela(props: ParcelaProps) {
-  const { parcelas: p, selectedValue, handleChange } = props;
+function Parcelas(props: ParcelaProps) {
+  const { parcelas: p} = props;
 
+  const { parcelas, selectedValue, trocaSelectecValue, trocaValorOriginal } = useContext(context);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    trocaSelectecValue(Number(event.target.value));
+    trocaValorOriginal(parcelas.find((p: ParcelaInfo) => p.parcela === Number(event.target.value))?.valorTotal || 33500);
+  };
 
   return (
     <BoxParcela 
@@ -14,7 +22,7 @@ function Parcela(props: ParcelaProps) {
       flexDirection={{ xs: 'column', sm: 'row' }}
       component="label"
       id="parcela"
-      $isActive={selectedValue === `${p.parcela}x`}
+      $isActive={selectedValue === p.parcela}
       mb={p.parcela === 1 ? 6 : 0}
     >
       <Box
@@ -38,17 +46,17 @@ function Parcela(props: ParcelaProps) {
         </Box>
 
         <Radio
-          checked={selectedValue === `${p.parcela}x`}
+          checked={selectedValue === p.parcela}
           onChange={handleChange}
-          value={`${p.parcela}x`}
+          value={`${p.parcela}`}
           checkedIcon={<Check sx={{ 
             color: "#fff", 
             backgroundColor: "#03D69D",
             borderRadius: "50%", 
           }} />}
           icon={<RadioButtonUnchecked />} 
-          name={`${p.parcela}x`}
-          id={`${p.parcela}x`}
+          name={`${p.parcela}`}
+          id={`${p.parcela}`}
         />
       </Box>
 
@@ -62,4 +70,4 @@ function Parcela(props: ParcelaProps) {
   )
 }
 
-export default Parcela
+export default Parcelas
