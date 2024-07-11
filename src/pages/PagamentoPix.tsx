@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@mui/material"
+import { Box, Button, Container, Grid } from "@mui/material"
 import { BoxQRPix, ButtonCopyPix } from "../components/ui/ComponentsPagamentoPix"
 import { ContentCopy } from "@mui/icons-material"
 import Footer from "../components/Footer"
@@ -7,14 +7,23 @@ import context from "../context/context"
 import ParcelasPagar from "../components/ParcelasPagar"
 import PrazoPagamento from "../components/PrazoPagamento"
 import Header from "../components/Header"
+import { useNavigate } from "react-router-dom"
+import { currencyFormatter } from "../utils/currencyFormatter"
 
 function PagamentoPix() {
-  const {selectedValue, valorOriginal} = useContext(context)
+  const {selectedValue, valorOriginal} = useContext(context);
+
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/pagamento-cartao')
+  }
+
   return (
     <>
        <Header 
           title={`João, pague a entrada de
-            R$ ${(valorOriginal / selectedValue).toFixed(2).replace('.', ',')} pelo Pix`}
+            ${currencyFormatter(valorOriginal / selectedValue)} pelo Pix`}
         />
       <Container>
       <Grid 
@@ -49,6 +58,16 @@ function PagamentoPix() {
           <Grid item xs={4}>
             <PrazoPagamento />
             <ParcelasPagar />
+          </Grid>
+
+          <Grid item xs={4}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Button variant="contained" sx={{backgroundColor: "#133A6F", color: "#fff"}} onClick={handleClick}>Avançar</Button>
+            </Box>
           </Grid>
         </Grid>
       </Container>
