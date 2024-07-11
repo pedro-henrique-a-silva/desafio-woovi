@@ -30,7 +30,7 @@ function PagamentoPix() {
           container 
           rowSpacing={1} 
           columnSpacing={{ xs: 0, sm: 2, md: 3 }}
-          columns={{ xs: 1, sm: 8, md: 12 }}
+          columns={{ xs: 1, sm: 8, md: 8 }}
         >
           <Grid item xs={4}>
             <Box
@@ -58,9 +58,6 @@ function PagamentoPix() {
           <Grid item xs={4}>
             <PrazoPagamento />
             <ParcelasPagar />
-          </Grid>
-
-          <Grid item xs={4}>
             <Box
               display="flex"
               alignItems="center"
