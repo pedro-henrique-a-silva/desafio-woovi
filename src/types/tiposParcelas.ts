@@ -5,6 +5,6 @@ export type ParcelaInfo = {
 
 export type ParcelaProps = {
   parcelas: ParcelaInfo,
-  selectedValue: string,
+  selectedValue: number,
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
