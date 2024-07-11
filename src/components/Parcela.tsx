@@ -1,6 +1,6 @@
 import { Check, RadioButtonUnchecked } from '@mui/icons-material'
 import { Box, Radio, Typography } from '@mui/material'
-import { BoxParcela, BoxPixTag } from './ui/ComponentsParcelamento'
+import { BoxParcela, BoxPixTag, BoxTag } from './ui/ComponentsParcelamento'
 import { ParcelaProps } from '../types/tiposParcelas';
 
 function Parcela(props: ParcelaProps) {
@@ -53,7 +53,10 @@ function Parcela(props: ParcelaProps) {
       </Box>
 
       {p.parcela === 1 && <Typography color="#03D69D" variant="body2" component="p">Ganhe 3% de Cashback</Typography>}
+      {p.parcela === 1 && <BoxTag fontSize={12}>🤑 R$ 300,00 de volta no seu Pix na hora</BoxTag>}
+      
       {p.parcela !== 1 && <Typography color="#AFAFAF" variant="body2" component="p">Total: {p.valorTotal}</Typography>}
+      {p.parcela === 4 && <BoxTag fontSize={12}>-3% de juros: Melhor opção de parcelamento</BoxTag>}
         
     </BoxParcela>
   )
