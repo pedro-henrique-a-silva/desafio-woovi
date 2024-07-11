@@ -6,6 +6,7 @@ import InputNome from './ui/InputNome'
 import { useContext, useState } from 'react'
 import context from '../context/context'
 import { currencyFormatter } from '../utils/currencyFormatter'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -28,6 +29,8 @@ function FormCartao() {
   const [formValues, setFormValues] = useState(defaultValues)
   const [formError, setFormError] = useState(false)
 
+  const navigate = useNavigate()
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
       ...formValues,
@@ -40,7 +43,7 @@ function FormCartao() {
     const formularioValido = Object.values(formValues).every((value) => value !== "");
 
     if(formularioValido){
-      console.log("Formulario valido")
+      navigate('/confirmacao')
       return
     }
     
