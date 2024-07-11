@@ -1,39 +1,22 @@
-import { Box, Container, Grid, Typography } from "@mui/material"
-import Logo from "../components/logo/Logo"
+import { Box, Container, Grid } from "@mui/material"
 import { BoxQRPix, ButtonCopyPix } from "../components/ui/ComponentsPagamentoPix"
-import { ContentCopy, ExpandLess } from "@mui/icons-material"
+import { ContentCopy } from "@mui/icons-material"
 import Footer from "../components/Footer"
+import { useContext } from "react"
+import context from "../context/context"
+import ParcelasPagar from "../components/ParcelasPagar"
+import PrazoPagamento from "../components/PrazoPagamento"
+import Header from "../components/Header"
 
 function PagamentoPix() {
+  const {selectedValue, valorOriginal} = useContext(context)
   return (
     <>
-       <Container>
-        <Box
-          display="flex"
-          alignItems="center"
-          mt={2}
-          mb={3}
-          justifyContent="center"
-        >
-          <Logo height="50" width="140" fill="#03D69D"/>
-        </Box>
-      </Container>
+       <Header 
+          title={`João, pague a entrada de
+            R$ ${(valorOriginal / selectedValue).toFixed(2).replace('.', ',')} pelo Pix`}
+        />
       <Container>
-        <Box
-          display="flex"
-          alignItems="center"
-          mb={3}
-          textAlign={"center"}
-          justifyContent="center"
-        >
-          <Typography variant="h6">
-            João, pague a entrada de
-            R$ 15.300,00 pelo Pix
-          </Typography>
-        </Box>
-      </Container>
-
-      <Container sx={{margin: 0, padding: 0}}>
       <Grid 
           container 
           rowSpacing={1} 
@@ -64,91 +47,8 @@ function PagamentoPix() {
           </Grid>
 
           <Grid item xs={4}>
-            <Box
-              textAlign={"center"}
-              sx={{marginTop: "10px", marginBottom: "10px"}}
-            >
-              <Typography 
-                variant="body2" 
-                component="p" 
-                sx={{ color: "#B2B2B2", }}
-              >
-                Prazo para pagamento:
-              </Typography>
-
-              <Typography
-                variant="body2" 
-                component="p" 
-                sx={{ fontWeight: "bold"}}
-              >
-                15/12/2021 - 08:17
-              </Typography>
-            </Box>
-
-            <Container sx={{margin: 0, padding: 0}}>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{
-                  padding: "5px 10px",
-                }}
-              >
-                <Typography variant="body2" component="p">1ª entrada no Pix</Typography>
-                <Typography variant="body2" component="p" sx={{fontWeight: "bold"}}>R$ 15.300,00</Typography>
-              </Box>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{
-                  padding: "5px 10px",
-                }}
-              >
-                <Typography variant="body2" component="p">2ª no cartão</Typography>
-                <Typography variant="body2" component="p" sx={{fontWeight: "bold"}}>R$ 15.300,00</Typography>
-              </Box>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{
-                  padding: "10px 4px",
-                  borderTop: "1px solid #B2B2B2",
-                  borderBottom: "1px solid #B2B2B2",
-                }}
-              >
-                <Typography variant="body2" component="p" sx={{fontSize: ".8rem",}}>CET: 0,5%</Typography>
-                <Typography variant="body2" component="p" sx={{fontSize: ".8rem",}}>Total: R$ 30.600,00</Typography>
-              </Box>
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{
-                  padding: "10px 4px",
-                  borderBottom: "1px solid #B2B2B2",
-                }}
-              >
-                <Typography variant="body2" component="p" sx={{fontSize: ".8rem", fontWeight: "bold"}}>Como funciona?</Typography>
-                <ExpandLess/>
-              </Box>
-
-              <Box
-                display="flex"
-                alignItems="center"
-                flexDirection={"column"}
-                justifyContent="space-between"
-                sx={{
-                  margin: "10px 0",
-                }}
-              >
-                <Typography variant="body2" component="p" sx={{fontSize: ".8rem", color: "#B2B2B2"}}>
-                  Identificador:
-                </Typography>
-                <Typography variant="body2" component="p" sx={{fontSize: ".8rem", fontWeight: "bold"}}>2c1b951f356c4680b13ba1c9fc889c47</Typography>
-              </Box>
-            </Container>
+            <PrazoPagamento />
+            <ParcelasPagar />
           </Grid>
         </Grid>
       </Container>
