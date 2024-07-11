@@ -14,7 +14,7 @@ function Parcela(props: ParcelaProps) {
       flexDirection={{ xs: 'column', sm: 'row' }}
       component="label"
       id="parcela"
-      isActive={selectedValue === `${p.parcela}x`}
+      $isActive={selectedValue === `${p.parcela}x`}
       mb={p.parcela === 1 ? 6 : 0}
     >
       <Box
