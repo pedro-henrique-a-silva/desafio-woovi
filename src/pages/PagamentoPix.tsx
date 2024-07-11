@@ -19,6 +19,10 @@ function PagamentoPix() {
     navigate('/pagamento-cartao')
   }
 
+  const handleCopyQr = () => {
+    navigator.clipboard.writeText("chave pix copiada!")
+  }
+
   return (
     <>
        <Header 
@@ -49,7 +53,7 @@ function PagamentoPix() {
               >
                 <img src="image2.png"/>
               </BoxQRPix>
-              <ButtonCopyPix variant="contained"  endIcon={<ContentCopy />}>
+              <ButtonCopyPix onClick={handleCopyQr} variant="contained"  endIcon={<ContentCopy />}>
                 Clique para copiar QR CODE
               </ButtonCopyPix>
             </Box>
