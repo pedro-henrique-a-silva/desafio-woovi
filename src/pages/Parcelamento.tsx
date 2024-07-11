@@ -28,8 +28,8 @@ function Parcelamento() {
         <Grid 
           container 
           rowSpacing={0} 
-          columnSpacing={{ xs: 0, sm: 2, md: 3 }}
-          columns={{ xs: 1, sm: 8, md: 12 }}
+          columnSpacing={{ xs: 0, sm: 0, md: 0 }}
+          columns={{ xs: 1, sm: 4, md: 4 }}
         >
           {parcelas.map((p) => (
             <Grid item xs={4} key={p.parcela}>
@@ -42,16 +42,14 @@ function Parcelamento() {
           )
           )}
 
-          <Grid item xs={4}>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Button variant="contained" sx={{backgroundColor: "#133A6F", color: "#fff", marginTop: "10px"}} onClick={handleClick}>Avançar</Button>
-            </Box>
-          </Grid>
         </Grid>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Button variant="contained" sx={{backgroundColor: "#133A6F", color: "#fff", marginTop: "10px"}} onClick={handleClick}>Avançar</Button>
+        </Box>
       </Container>
        
       <Footer/>
