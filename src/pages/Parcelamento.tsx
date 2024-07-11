@@ -1,13 +1,13 @@
-import { Box, Container, Grid, Typography } from "@mui/material"
+import { Box, Button, Container, Grid, Typography } from "@mui/material"
 import Logo from "../components/logo/Logo"
 import Parcela from "../components/Parcela";
 import { useState } from "react";
-import { FooterParcelas } from "../components/ui/ComponentsParcelamento";
-import { VerifiedUser } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Parcelamento() {
- 
   const [selectedValue, setSelectedValue] = useState('1x');
+  const navigate = useNavigate()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
@@ -19,6 +19,10 @@ function Parcelamento() {
     parcela: index + 1,
     valorTotal: index + 1 == 1 ? valorOriginal : (valorOriginal + ((index + 1) * (valorOriginal * 0.0041))),
   }));
+
+  const handleClick = () => {
+    navigate('/pagamento-pix')
+  }
 
   return (
     <>
@@ -43,7 +47,7 @@ function Parcelamento() {
         >
           <Typography variant="h6">João, como você quer pagar?</Typography>
         </Box>
-      </Container>
+      </Container> 
     
       <Container>
         <Grid 
@@ -63,24 +67,20 @@ function Parcelamento() {
             </Grid>
           )
           )}
+
+          <Grid item xs={4}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Button variant="contained" sx={{backgroundColor: "#133A6F", color: "#fff"}} onClick={handleClick}>Avançar</Button>
+            </Box>
+          </Grid>
         </Grid>
       </Container>
-      <FooterParcelas>
-      <Box
-          display="flex"
-          alignItems="center"
-          gap={1}
-          justifyContent="center"
-        >
-          <VerifiedUser sx={
-            {
-              color:"#B2B2B2"
-            }
-          }/>
-          <Typography fontSize={12}>Pagamento 100% seguro via:</Typography>
-          <Logo height="50" width="50" fill="#B2B2B2"/>
-        </Box>
-      </FooterParcelas>
+       
+      <Footer/>
     </>
   )
 }
