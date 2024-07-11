@@ -1,16 +1,21 @@
-import { Box, Typography } from '@mui/material';
+import { Box, BoxProps, Typography } from '@mui/material';
 import { styled } from '@mui/system';
+import { BoxParcelaProps } from '../../types/tiposParcelas';
 
-type BoxParcelaProps = {
-  $isActive: boolean
 
-}
 
-export const BoxParcela = styled(Box)<BoxParcelaProps>`
+export const BoxParcela = styled(Box, {
+  shouldForwardProp: (propName) => propName !== 'isActive',
+})<BoxParcelaProps & BoxProps>`
   padding: 20px;
   border: 1px solid #E5E5E5;
   transition: all 0.3s easy;
-  ${({ $isActive }) => $isActive &&  `
+
+  &:after {
+    transition: all 0.3s easy;
+  }
+
+  ${({ isActive }) => isActive &&  `
     border: 1px solid #03D69D; 
     border-radius: 5px;
 

@@ -8,3 +8,8 @@ export type ParcelaProps = {
   selectedValue: number,
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
+
+export type BoxParcelaProps = {
+  isActive: boolean
+
+}

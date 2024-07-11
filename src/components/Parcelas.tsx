@@ -26,10 +26,11 @@ function Parcelas(props: ParcelaProps) {
         cursor: "pointer",
       }}
       id="parcela"
-      $isActive={selectedValue === p.parcela}
+      isActive={selectedValue === p.parcela}
       mb={p.parcela === 1 ? 6 : 0}
     >
-      <Box
+      <Box      
+
         display="flex"
         justifyContent="space-between"
         alignItems="center"
