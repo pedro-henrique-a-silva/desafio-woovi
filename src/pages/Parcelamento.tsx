@@ -1,7 +1,9 @@
-import { Box, Container, Grid } from "@mui/material"
+import { Box, Container, Grid, Typography } from "@mui/material"
 import Logo from "../components/logo/Logo"
 import Parcela from "../components/Parcela";
 import { useState } from "react";
+import { FooterParcelas } from "../components/ui/ComponentsParcelamento";
+import { VerifiedUser } from "@mui/icons-material";
 
 function Parcelamento() {
  
@@ -28,10 +30,21 @@ function Parcelamento() {
           mb={6}
           justifyContent="center"
         >
-          <Logo />
+          <Logo height="50" width="140" fill="#03D69D"/>
         </Box>
       </Container>
-
+      <Container>
+        <Box
+          display="flex"
+          alignItems="center"
+          mt={2}
+          mb={6}
+          justifyContent="center"
+        >
+          <Typography variant="h6">João, como você quer pagar?</Typography>
+        </Box>
+      </Container>
+    
       <Container>
         <Grid 
           container 
@@ -52,6 +65,22 @@ function Parcelamento() {
           )}
         </Grid>
       </Container>
+      <FooterParcelas>
+      <Box
+          display="flex"
+          alignItems="center"
+          gap={1}
+          justifyContent="center"
+        >
+          <VerifiedUser sx={
+            {
+              color:"#B2B2B2"
+            }
+          }/>
+          <Typography fontSize={12}>Pagamento 100% seguro via:</Typography>
+          <Logo height="50" width="50" fill="#B2B2B2"/>
+        </Box>
+      </FooterParcelas>
     </>
   )
 }
