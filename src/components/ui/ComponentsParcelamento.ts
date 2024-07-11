@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 
 type BoxParcelaProps = {
@@ -51,17 +51,3 @@ export const BoxTag = styled(Box)`
 
 `;
 
-export const FooterParcelas = styled(Container)`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  font-size: 12px;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  
-  & svg {
-    color: #B2B2B2;
-  }
-`;
