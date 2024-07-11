@@ -8,7 +8,7 @@ import { useContext } from "react"
 import context from "../context/context"
 
 function PagamentoCartao() {
-  const {selectedValue} = useContext(context)
+  const {nome, selectedValue} = useContext(context)
 
   const defaultParcelas = selectedValue > 1 
     ? selectedValue - 1 
@@ -16,7 +16,7 @@ function PagamentoCartao() {
   return (
     <>
        <Header 
-          title={`João, pague o restante em ${defaultParcelas} x no cartão`}
+          title={`${nome}, pague o restante em ${defaultParcelas} x no cartão`}
         />
       <Container>
       <Grid 
