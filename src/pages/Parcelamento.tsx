@@ -1,24 +1,20 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material"
-import Logo from "../components/logo/Logo"
-import Parcela from "../components/Parcela";
-import { useState } from "react";
+import { Box, Button, Container, Grid } from "@mui/material"
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import context from "../context/context";
+import Parcelas from "../components/Parcelas";
+import Header from "../components/Header";
 
 function Parcelamento() {
-  const [selectedValue, setSelectedValue] = useState('1x');
+  const { parcelas, selectedValue, trocaSelectecValue } = useContext(context)
+
   const navigate = useNavigate()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue(event.target.value);
+    trocaSelectecValue(Number(event.target.value));
   };
 
-  const qtdParcelas = 7;
-  const valorOriginal = 30500.00;
-  const parcelas = new Array(qtdParcelas).fill(0).map((_, index) => ({
-    parcela: index + 1,
-    valorTotal: index + 1 == 1 ? valorOriginal : (valorOriginal + ((index + 1) * (valorOriginal * 0.0041))),
-  }));
 
   const handleClick = () => {
     navigate('/pagamento-pix')
@@ -26,28 +22,7 @@ function Parcelamento() {
 
   return (
     <>
-      <Container>
-        <Box
-          display="flex"
-          alignItems="center"
-          mt={2}
-          mb={6}
-          justifyContent="center"
-        >
-          <Logo height="50" width="140" fill="#03D69D"/>
-        </Box>
-      </Container>
-      <Container>
-        <Box
-          display="flex"
-          alignItems="center"
-          mt={2}
-          mb={6}
-          justifyContent="center"
-        >
-          <Typography variant="h6">João, como você quer pagar?</Typography>
-        </Box>
-      </Container> 
+      <Header title="João, como você quer pagar?"/>
     
       <Container>
         <Grid 
@@ -59,7 +34,7 @@ function Parcelamento() {
         >
           {parcelas.map((p) => (
             <Grid item xs={4} key={p.parcela}>
-              <Parcela 
+              <Parcelas 
                 selectedValue={selectedValue} 
                 handleChange={handleChange} 
                 parcelas={p}
