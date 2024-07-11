@@ -20,8 +20,11 @@ function Parcelas(props: ParcelaProps) {
     <BoxParcela 
       display="flex"
       position="relative"
-      flexDirection={{ xs: 'column', sm: 'row' }}
+      flexDirection={"column"}
       component="label"
+      sx={{
+        cursor: "pointer",
+      }}
       id="parcela"
       $isActive={selectedValue === p.parcela}
       mb={p.parcela === 1 ? 6 : 0}
