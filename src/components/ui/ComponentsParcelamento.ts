@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { styled } from '@mui/system';
 
 type BoxParcelaProps = {
@@ -37,4 +37,31 @@ export const BoxPixTag = styled(Box)`
   padding: 5px;
   border-radius: 5px;
   background-color: #E5E5E5;
+`;
+
+
+export const BoxTag = styled(Box)`
+  color: #fff;
+  position: relative;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin-top: 10px;
+  background-color: #133A6F;
+  clip-path: polygon(0% 0%, 100% 0%, 95% 50%, 100% 100%, 0% 100%);
+
+`;
+
+export const FooterParcelas = styled(Container)`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-size: 12px;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
+  & svg {
+    color: #B2B2B2;
+  }
 `;
