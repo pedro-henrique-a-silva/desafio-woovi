@@ -26,12 +26,14 @@ function FormCartao() {
   
   }
   const [formValues, setFormValues] = useState(defaultValues)
+  const [formError, setFormError] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value
     })
+    setFormError(false)
   }
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -41,7 +43,9 @@ function FormCartao() {
       console.log("Formulario valido")
       return
     }
-
+    
+    setFormValues(defaultValues)
+    setFormError(true)
     console.log("Formulario invalido")
   }
 
@@ -60,6 +64,7 @@ function FormCartao() {
     <form onSubmit={handleSubmit}>
       <InputNome 
         fullWidth
+        error={formError}
         onKeyDown={onlyLetters}
         name="nome"
         onChange={handleChange}
@@ -71,7 +76,8 @@ function FormCartao() {
       />
       <InputCpf 
         fullWidth
-        name="cpf"
+        name="cpf"      
+        error={formError}
         size="small" 
         onChange={handleChange}
         value={formValues.cpf}
@@ -81,7 +87,8 @@ function FormCartao() {
       />
       <InputCartao 
         fullWidth 
-        size="small" 
+        size="small"
+        error={formError} 
         name="cartao"
         onChange={handleChange}
         value={formValues.cartao}
@@ -97,6 +104,7 @@ function FormCartao() {
         <InputValidade 
           sx={{width: "45%"}} 
           size="small"
+          error={formError}
           onChange={handleChange}
           value={formValues.validade}
           name="validade"
@@ -106,6 +114,7 @@ function FormCartao() {
         <TextField 
           sx={{width: "45%"}} 
           size="small"
+          error={formError}
           onChange={handleChange}
           value={formValues.cvv}
           name="cvv"
@@ -119,6 +128,7 @@ function FormCartao() {
           sx={{marginBottom: "10px"}}
           label="Parcelas"
           size="small"
+          error={formError}
           onChange={handleChange}
           value={formValues.parcelas}
           name="parcelas"
