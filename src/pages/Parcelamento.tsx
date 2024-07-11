@@ -7,7 +7,7 @@ import Parcelas from "../components/Parcelas";
 import Header from "../components/Header";
 
 function Parcelamento() {
-  const { parcelas, selectedValue, trocaSelectecValue } = useContext(context)
+  const {nome, parcelas, selectedValue, trocaSelectecValue } = useContext(context)
 
   const navigate = useNavigate()
 
@@ -22,12 +22,11 @@ function Parcelamento() {
 
   return (
     <>
-      <Header title="João, como você quer pagar?"/>
+      <Header title={`${nome}, como você quer pagar?`}/>
     
       <Container>
         <Grid 
           container 
-          // spacing={2}
           rowSpacing={0} 
           columnSpacing={{ xs: 0, sm: 2, md: 3 }}
           columns={{ xs: 1, sm: 8, md: 12 }}
@@ -49,7 +48,7 @@ function Parcelamento() {
               alignItems="center"
               justifyContent="center"
             >
-              <Button variant="contained" sx={{backgroundColor: "#133A6F", color: "#fff"}} onClick={handleClick}>Avançar</Button>
+              <Button variant="contained" sx={{backgroundColor: "#133A6F", color: "#fff", marginTop: "10px"}} onClick={handleClick}>Avançar</Button>
             </Box>
           </Grid>
         </Grid>
