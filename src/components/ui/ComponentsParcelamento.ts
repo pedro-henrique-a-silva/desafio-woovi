@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
 type BoxParcelaProps = {
@@ -29,7 +29,7 @@ export const BoxParcela = styled(Box)<BoxParcelaProps>`
    
 `;
 
-export const BoxPixTag = styled(Box)`
+export const BoxPixTag = styled(Typography)`
   position: absolute;
   top: -16px;
   left: 16px;
