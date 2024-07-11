@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material';
 import { styled } from '@mui/system';
 
 type BoxParcelaProps = {
-  isActive: boolean
+  $isActive: boolean
 
 }
 
@@ -10,8 +10,8 @@ export const BoxParcela = styled(Box)<BoxParcelaProps>`
   padding: 20px;
   border: 1px solid #E5E5E5;
   transition: all 0.3s easy;
-  ${({ isActive }) => isActive &&  `
-    border: 1px solid #03D69; 
+  ${({ $isActive }) => $isActive &&  `
+    border: 1px solid #03D69D; 
     border-radius: 5px;
 
     &:after {
