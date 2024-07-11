@@ -4,6 +4,7 @@ import { BoxParcela, BoxPixTag, BoxTag } from './ui/ComponentsParcelamento'
 import { ParcelaInfo, ParcelaProps } from '../types/tiposParcelas';
 import { useContext } from 'react';
 import context from '../context/context';
+import { currencyFormatter } from '../utils/currencyFormatter';
 
 function Parcelas(props: ParcelaProps) {
   const { parcelas: p} = props;
@@ -38,10 +39,10 @@ function Parcelas(props: ParcelaProps) {
             {p.parcela} X
           </Typography>
           <Typography variant="body1" component="p">
-            R$ {(p.valorTotal / p.parcela).toFixed(2).replace('.', ',')}
+            {currencyFormatter(p.valorTotal / p.parcela)}
           </Typography>
-          {p.parcela === 1 && <BoxPixTag><p>Pix</p></BoxPixTag>}
-          {p.parcela === 2 && <BoxPixTag><p>Pix Parcelado</p></BoxPixTag>}
+          {p.parcela === 1 && <BoxPixTag>Pix</BoxPixTag>}
+          {p.parcela === 2 && <BoxPixTag>Pix Parcelado</BoxPixTag>}
 
         </Box>
 
@@ -63,7 +64,7 @@ function Parcelas(props: ParcelaProps) {
       {p.parcela === 1 && <Typography color="#03D69D" variant="body2" component="p">Ganhe 3% de Cashback</Typography>}
       {p.parcela === 1 && <BoxTag fontSize={12}>🤑 R$ 300,00 de volta no seu Pix na hora</BoxTag>}
       
-      {p.parcela !== 1 && <Typography color="#AFAFAF" variant="body2" component="p">Total: {p.valorTotal}</Typography>}
+      {p.parcela !== 1 && <Typography color="#AFAFAF" variant="body2" component="p">Total: {currencyFormatter(p.valorTotal)}</Typography>}
       {p.parcela === 4 && <BoxTag fontSize={12}>-3% de juros: Melhor opção de parcelamento</BoxTag>}
         
     </BoxParcela>
